@@ -29,6 +29,7 @@ function AttachmentDisplay({ attachment }: AttachmentDisplayProps) {
         </div>
         <button
           onClick={handleDownload}
+          type="button"
           className="px-4 py-2 text-sm font-medium text-blue-700 bg-blue-50 rounded-md hover:bg-blue-100 transition-colors"
         >
           Descargar
