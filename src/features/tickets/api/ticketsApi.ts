@@ -1,6 +1,7 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Ticket, PaginationParams, PaginatedResponse } from '../models'
 import { storage, STORAGE_KEYS } from '@/shared/lib/storage'
+import { ITEMS_PER_PAGE } from '../models/ticket'
 
 /**
  * Helper to get all tickets from localStorage
@@ -30,7 +31,7 @@ export const ticketsApi = createApi({
     getTickets: builder.query<PaginatedResponse<Ticket>, Partial<PaginationParams> | void>({
       queryFn: (params) => {
         try {
-          const { page = 1, limit = 10 } = params || {}
+          const { page = 1, limit = ITEMS_PER_PAGE } = params || {}
           const tickets = getTicketsFromStorage()
 
           const sortedTickets = [...tickets].sort(

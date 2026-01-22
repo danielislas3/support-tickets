@@ -85,7 +85,7 @@ function TicketForm() {
       // Success: reset form and redirect
       reset()
       setSelectedFileName(null)
-      navigate('/mis-reportes')
+      navigate('/my-reports')
     } catch (error) {
       console.error('Error creating ticket:', error)
     }
@@ -165,7 +165,7 @@ function TicketForm() {
             id="attachment"
             onChange={handleFileChange}
             className="hidden"
-            accept=".jpg,.png,.pdf,.txt"
+            accept=".jpg, .jpeg, .png, .pdf, .txt"
           />
           <label
             htmlFor="attachment"

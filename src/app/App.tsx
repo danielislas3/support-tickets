@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './Layout'
 import ReportTicket from './routes/ReportTicket'
-import MyTickets from './routes/MyTickets'
+import MyReports from './routes/MyReports'
 import TicketDetail from './routes/TicketDetail'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<ReportTicket />} />
-          <Route path="mis-reportes" element={<MyTickets />} />
+          <Route path="my-reports" element={<MyReports />} />
           <Route path="ticket/:id" element={<TicketDetail />} />
         </Route>
       </Routes>
