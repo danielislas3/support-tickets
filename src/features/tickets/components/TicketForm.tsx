@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
+import { HiPaperClip, HiDocumentText, HiXMark } from 'react-icons/hi2'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { useCreateTicketMutation } from '../api/ticketsApi'
 import { createTicketSchema, type CreateTicketFormData } from '../models/validationSchema'
 import { fileToAttachedFile, formatFileSize, getFileValidationError } from '../utils/fileUtils'
@@ -163,25 +165,13 @@ function TicketForm() {
             id="attachment"
             onChange={handleFileChange}
             className="hidden"
-            accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.txt"
+            accept=".jpg,.png,.pdf,.txt"
           />
           <label
             htmlFor="attachment"
             className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus-within:ring-2 focus-within:ring-blue-500 cursor-pointer transition-colors"
           >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"
-              />
-            </svg>
+            <HiPaperClip className="w-5 h-5 mr-2" />
             Seleccionar archivo
           </label>
           <p className="mt-1 text-xs text-gray-500">
@@ -193,19 +183,7 @@ function TicketForm() {
         {selectedFileName && (
           <div className="mt-2 flex items-center justify-between p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex items-center space-x-2">
-              <svg
-                className="w-5 h-5 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
+              <HiDocumentText className="w-5 h-5 text-blue-600" />
               <div>
                 <p className="text-sm font-medium text-gray-900">{selectedFileName}</p>
                 {selectedFile && (
@@ -218,14 +196,7 @@ function TicketForm() {
               onClick={removeFile}
               className="text-red-600 hover:text-red-800 transition-colors"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <HiXMark className="w-5 h-5" />
             </button>
           </div>
         )}
@@ -246,25 +217,7 @@ function TicketForm() {
         >
           {isLoading ? (
             <span className="flex items-center justify-center">
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
+              <AiOutlineLoading3Quarters className="animate-spin -ml-1 mr-3 h-5 w-5" />
               Creando ticket...
             </span>
           ) : (
