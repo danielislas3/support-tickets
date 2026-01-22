@@ -26,7 +26,7 @@ function Layout() {
             <NavLink to="/" end className={navLinkClass}>
               Reportar Problema
             </NavLink>
-            <NavLink to="/mis-reportes" className={navLinkClass}>
+            <NavLink to="/my-reports" className={navLinkClass}>
               Mis Reportes
             </NavLink>
           </div>
