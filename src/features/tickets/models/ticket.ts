@@ -29,3 +29,5 @@ export interface PaginatedResponse<T> {
   page: number
   totalPages: number
 }
+
+export const ITEMS_PER_PAGE = 10
