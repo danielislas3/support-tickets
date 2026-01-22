@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { useGetTicketsQuery, useDeleteTicketMutation } from '../api/ticketsApi'
-import { PriorityBadge, StatusBadge } from './TicketBadge'
 import EmptyState from './EmptyState'
 import { ITEMS_PER_PAGE } from '../models/ticket'
 import DeleteConfirmModal from './DeleteConfirmModal'
 import { Pagination } from '@/shared/components'
+import TicketTableRow from './TicketTableRow'
 
 
 
@@ -48,17 +47,6 @@ function TicketsTable() {
   const handleCancelDelete = () => {
     setDeleteModalOpen(false)
     setTicketToDelete(null)
-  }
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return new Intl.DateTimeFormat('es-ES', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(date)
   }
 
   if (isLoading) {
@@ -109,43 +97,11 @@ function TicketsTable() {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {data.data.map((ticket) => (
-              <tr key={ticket.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4">
-                  <div className="flex items-center">
-                    <div>
-                      <div className="text-sm font-medium text-gray-900">{ticket.subject}</div>
-                      <div className="text-sm text-gray-500 truncate max-w-xs">
-                        {ticket.detail}
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <PriorityBadge priority={ticket.priority} />
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <StatusBadge status={ticket.status} />
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {formatDate(ticket.createdAt)}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <div className="flex items-center justify-end gap-2">
-                    <Link
-                      to={`/ticket/${ticket.id}`}
-                      className="text-blue-600 hover:text-blue-900 transition-colors"
-                    >
-                      Ver
-                    </Link>
-                    <button
-                      onClick={() => handleDeleteClick(ticket.id, ticket.subject)}
-                      className="text-red-600 hover:text-red-900 transition-colors"
-                    >
-                      Eliminar
-                    </button>
-                  </div>
-                </td>
-              </tr>
+              <TicketTableRow
+                key={ticket.id}
+                ticket={ticket}
+                onDelete={handleDeleteClick}
+              />
             ))}
           </tbody>
         </table>

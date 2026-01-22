@@ -1,5 +1,6 @@
 export { default as TicketForm } from './TicketForm'
 export { default as TicketsTable } from './TicketsTable'
+export { default as TicketTableRow } from './TicketTableRow'
 export { default as EmptyState } from './EmptyState'
 export { default as DeleteConfirmModal } from './DeleteConfirmModal'
 export { PriorityBadge, StatusBadge } from './TicketBadge'
