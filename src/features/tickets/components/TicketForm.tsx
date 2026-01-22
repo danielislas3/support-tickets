@@ -165,7 +165,7 @@ function TicketForm() {
             id="attachment"
             onChange={handleFileChange}
             className="hidden"
-            accept=".jpg,.png,.pdf,.txt"
+            accept=".jpg, .jpeg, .png, .pdf, .txt"
           />
           <label
             htmlFor="attachment"
