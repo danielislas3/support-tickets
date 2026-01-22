@@ -27,9 +27,10 @@ export const ticketsApi = createApi({
     /**
      * Get all tickets with optional pagination
      */
-    getTickets: builder.query<PaginatedResponse<Ticket>, PaginationParams>({
-      queryFn: ({ page = 1, limit = 10 }) => {
+    getTickets: builder.query<PaginatedResponse<Ticket>, Partial<PaginationParams> | void>({
+      queryFn: (params) => {
         try {
+          const { page = 1, limit = 10 } = params || {}
           const tickets = getTicketsFromStorage()
 
           const sortedTickets = [...tickets].sort(
