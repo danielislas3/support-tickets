@@ -195,6 +195,7 @@ function TicketForm() {
               type="button"
               onClick={removeFile}
               className="text-red-600 hover:text-red-800 transition-colors"
+              aria-label="Eliminar archivo"
             >
               <HiXMark className="w-5 h-5" />
             </button>

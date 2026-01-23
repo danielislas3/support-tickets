@@ -52,7 +52,7 @@ export const ticketsApi = createApi({
               totalPages,
             },
           }
-        } catch (error) {
+        } catch (_error) { // eslint-disable-line @typescript-eslint/no-unused-vars
           return {
             error: {
               status: 'CUSTOM_ERROR',
@@ -89,7 +89,7 @@ export const ticketsApi = createApi({
           }
 
           return { data: ticket }
-        } catch (error) {
+        } catch (_error) { // eslint-disable-line @typescript-eslint/no-unused-vars
           return {
             error: {
               status: 'CUSTOM_ERROR',
@@ -120,7 +120,7 @@ export const ticketsApi = createApi({
           saveTicketsToStorage(updatedTickets)
 
           return { data: ticket }
-        } catch (error) {
+        } catch (_error) { // eslint-disable-line @typescript-eslint/no-unused-vars
           return {
             error: {
               status: 'CUSTOM_ERROR',
@@ -157,7 +157,7 @@ export const ticketsApi = createApi({
           saveTicketsToStorage(updatedTickets)
 
           return { data: updatedTicket }
-        } catch (error) {
+        } catch (_error) { // eslint-disable-line @typescript-eslint/no-unused-vars
           return {
             error: {
               status: 'CUSTOM_ERROR',
@@ -184,7 +184,7 @@ export const ticketsApi = createApi({
           saveTicketsToStorage(updatedTickets)
 
           return { data: undefined }
-        } catch (error) {
+        } catch (_error) { // eslint-disable-line @typescript-eslint/no-unused-vars
           return {
             error: {
               status: 'CUSTOM_ERROR',
