@@ -34,7 +34,7 @@ describe('TicketForm', () => {
     // Setup mocks
     vi.mocked(useCreateTicketMutation).mockReturnValue([
       mockCreateTicket,
-      { isLoading: false },
+      { isLoading: false, reset: vi.fn() },
     ])
     vi.mocked(useNavigate).mockReturnValue(mockNavigate)
 
@@ -205,7 +205,7 @@ describe('TicketForm', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(useCreateTicketMutation as any).mockReturnValue([
       vi.fn().mockResolvedValue({ unwrap: vi.fn() }),
-      { isLoading: true },
+      { isLoading: true, reset: vi.fn() },
     ])
 
     render(<TicketForm />)
